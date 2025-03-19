@@ -17,8 +17,8 @@ export const NewMovie = ({ onAdd }: Props) => {
   });
 
   const handleChange = (name: string) => {
-    return (newValue: string) => {
-      setFormData(prev => ({ ...prev, [name]: newValue }));
+    return (newInputValue: string) => {
+      setFormData(prev => ({ ...prev, [name]: newInputValue }));
     };
   };
 
@@ -27,6 +27,7 @@ export const NewMovie = ({ onAdd }: Props) => {
     const newMovie = { ...formData };
 
     onAdd(newMovie);
+    setCount(prevCount => prevCount + 1);
     setFormData({
       title: '',
       description: '',
@@ -34,8 +35,6 @@ export const NewMovie = ({ onAdd }: Props) => {
       imdbUrl: '',
       imdbId: '',
     });
-
-    setCount(count + 1);
   };
 
   const isFormValid =
